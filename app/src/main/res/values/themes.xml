@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.MyTodoPrep" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/app_color_dark</item>
+    </style>
+</resources>

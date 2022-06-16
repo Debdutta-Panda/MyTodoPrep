@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyTodoPrep</string>
+    <string name="no_tasks_yet">No task yet</string>
+    <string name="add_task">Add Task</string>
+    <string name="new_task_title_placeholder">Title</string>
+    <string name="new_task_description_placeholder">Description</string>
+</resources>
