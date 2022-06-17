@@ -9,6 +9,7 @@ class SplashViewModel: ViewModel() {
     init {
         navigation.navigate{navHostController, lifecycleOwner ->
             delay(4000L)
+            navHostController.popBackStack()
             navHostController.navigate("home")
         }
     }

@@ -37,3 +37,10 @@ val field_placeholder_big = TextStyle(
         Font(R.font.montserrat_thin)
     )
 )
+
+val checkable_header = TextStyle(
+    fontSize = 32.sp,
+    fontFamily = FontFamily(
+        Font(R.font.montserrat_thin)
+    )
+)

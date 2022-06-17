@@ -4,4 +4,10 @@
     <string name="add_task">Add Task</string>
     <string name="new_task_title_placeholder">Title</string>
     <string name="new_task_description_placeholder">Description</string>
+    <string name="set_time">Set Time</string>
+    <string name="set_date">Set Date</string>
+    <string name="checklist">Checklist</string>
+    <string name="add_checkable">Add Checkable</string>
+    <string name="add">Add</string>
+    <string name="item">Item</string>
 </resources>
