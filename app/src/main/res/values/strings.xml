@@ -10,4 +10,6 @@
     <string name="add_checkable">Add Checkable</string>
     <string name="add">Add</string>
     <string name="item">Item</string>
+    <string name="please_put_title_description_or_checkables">Please put title or description or checkables</string>
+    <string name="task_added_successfully">Task added successfully</string>
 </resources>

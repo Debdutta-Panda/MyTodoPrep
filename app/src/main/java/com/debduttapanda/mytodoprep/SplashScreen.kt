@@ -13,13 +13,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 
 @Composable
-fun SplashScreen(splashViewModel: SplashViewModel, navController: NavHostController) {
+fun SplashScreen(
+    navController: NavHostController,
+    vm: SplashViewModel = viewModel()
+) {
     val owner = LocalLifecycleOwner.current
-    LaunchedEffect(key1 = splashViewModel.navigation.value){
-        splashViewModel.navigation.forward(navController,owner)
+    LaunchedEffect(key1 = vm.navigation.value){
+        vm.navigation.forward(navController,owner)
     }
     Box(
         modifier = Modifier

@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id("kotlin-android") // Only for Kotlin projects.
+    id("kotlin-kapt") // Only for Kotlin projects.
+    //id("io.objectbox") // Apply last.
 }
 
 android {
@@ -26,6 +29,7 @@ android {
         }
     }
     compileOptions {
+        coreLibraryDesugaringEnabled = true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -69,4 +73,16 @@ dependencies {
 
     //material icons
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
+
+    debugImplementation("io.objectbox:objectbox-android-objectbrowser:$objectboxVersion")
+
+    implementation "com.google.accompanist:accompanist-pager:0.24.11-rc"
+
+    // If using indicators, also depend on
+    implementation "com.google.accompanist:accompanist-pager-indicators:0.24.11-rc"
+    implementation 'com.google.android.material:material:1.6.1'
+
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 }
+
+apply plugin: 'io.objectbox'

@@ -12,5 +12,11 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+buildscript {
+    repositories {
+        mavenCentral()
+        // Note: 2.9.0 and older are available on jcenter()
+    }
+}
 rootProject.name = "MyTodoPrep"
 include ':app'

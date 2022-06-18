@@ -13,20 +13,13 @@ import com.debduttapanda.mytodoprep.ui.theme.MyTodoPrepTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val splashViewModel: SplashViewModel by viewModels()
-        val homeViewModel: HomeViewModel by viewModels()
-        val addTaskViewModel: AddTaskViewModel by viewModels()
         setContent {
             MyTodoPrepTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    MainContent(
-                        splashViewModel,
-                        homeViewModel,
-                        addTaskViewModel
-                    )
+                    MainContent()
                 }
             }
         }

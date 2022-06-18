@@ -44,3 +44,9 @@ val checkable_header = TextStyle(
         Font(R.font.montserrat_thin)
     )
 )
+val task_title_style = TextStyle(
+    fontSize = 16.sp,
+    fontFamily = FontFamily(
+        Font(R.font.montserrat_bold)
+    )
+)

@@ -2,30 +2,29 @@ package com.debduttapanda.mytodoprep
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Row
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun AddTaskScreen(
-    addTaskViewModel: AddTaskViewModel,
-    navController: NavHostController
+fun AddOrEditTaskScreen(
+    navController: NavHostController,
+    vm: AddOrEditTaskViewModel = viewModel()
 ) {
     val owner = LocalLifecycleOwner.current
-    LaunchedEffect(key1 = addTaskViewModel.navigation.value){
-        addTaskViewModel.navigation.forward(navController,owner)
+    val context = LocalContext.current
+    LaunchedEffect(key1 = vm.navigation.value){
+        vm.navigation.forward(navController,owner,Toaster(context))
     }
-    val config = LocalConfiguration.current
     Scaffold(
         topBar = {
             TopAppBar(
@@ -38,22 +37,24 @@ fun AddTaskScreen(
                 navigationIcon = {
                     IconButton(
                         onClick = {
-                            addTaskViewModel.onBackPressed()
+                            vm.onBackPressed()
                         }
                     ) {
                         Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 },
                 actions = {
-                    IconButton(onClick = {
-                        addTaskViewModel.onAddClick()
-                    }) {
+                    IconButton(
+                        onClick = {
+                            vm.onTaskAdd()
+                        },
+                    ) {
                         Icon(imageVector = Icons.Default.Done, contentDescription = "Save")
                     }
                 }
             )
         }
     ) {
-        AddTaskContent(addTaskViewModel)
+        AddTaskContent()
     }
 }

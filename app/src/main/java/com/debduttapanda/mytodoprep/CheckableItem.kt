@@ -24,22 +24,23 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.debduttapanda.mytodoprep.ui.theme.GreenColor
 import com.debduttapanda.mytodoprep.ui.theme.LightRedColor
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun CheckableItem(
-    addTaskViewModel: AddTaskViewModel,
-    item: Checkable
+    item: Checkable,
+    vm: AddOrEditTaskViewModel = viewModel()
 ) {
     var currentPos by remember { mutableStateOf(0) }
     var textFieldValue by rememberSaveable(stateSaver = TextFieldValue.Saver){
         mutableStateOf(TextFieldValue(item.value))
     }
     val (focusRequester) = FocusRequester.createRefs()
-    LaunchedEffect(key1 = addTaskViewModel.currentFocusRequestId.value){
-        if(item.id==addTaskViewModel.currentFocusRequestId.value){
+    LaunchedEffect(key1 = vm.currentFocusRequestId.value){
+        if(item.uid==vm.currentFocusRequestId.value){
             focusRequester.requestFocus()
         }
     }
@@ -49,6 +50,19 @@ fun CheckableItem(
             .padding(bottom = 4.dp),
         verticalAlignment = Alignment.CenterVertically
     ){
+        IconButton(
+            onClick = {
+                vm.onCheckableDelete(item)
+            },
+            modifier = Modifier.size(32.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Delete,
+                contentDescription = "Delete Checkable",
+                tint = LightRedColor,
+                modifier = Modifier.size(16.dp)
+            )
+        }
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -62,14 +76,14 @@ fun CheckableItem(
                 Checkbox(
                     checked = item.checked,
                     onCheckedChange = {
-                        addTaskViewModel.onCheckItem(item,it)
+                        vm.onCheckableCheck(item,it)
                     }
                 )
                 TextField(
                     value = textFieldValue,
                     onValueChange = {
                         textFieldValue = it.copy(text = it.text.trim())
-                        addTaskViewModel.onValueChange(item,textFieldValue.text)
+                        vm.onCheckableValueChange(item,textFieldValue.text)
                     },
                     colors = TextFieldDefaults.textFieldColors(
                         backgroundColor = Color.Transparent,
@@ -89,10 +103,10 @@ fun CheckableItem(
                         .onKeyEvent {
                             Log.d("flfklskf", it.nativeKeyEvent.keyCode.toString())
                             if (it.nativeKeyEvent.keyCode == KEYCODE_ENTER) {
-                                addTaskViewModel.onAddCheckable(item)
+                                vm.onAddCheckable(item)
                                 true
                             } else if (it.nativeKeyEvent.keyCode == KEYCODE_DEL) {
-                                addTaskViewModel.onBackOnValue(
+                                vm.onBackOnValue(
                                     item,
                                     currentPos,
                                     textFieldValue.selection.start
@@ -107,7 +121,7 @@ fun CheckableItem(
                         .focusRequester(focusRequester)
                         .onFocusChanged {
                             if (it.isFocused) {
-                                addTaskViewModel.onFocusGot(item)
+                                vm.onFocusGot(item)
                             }
                         }
                 )
@@ -118,7 +132,7 @@ fun CheckableItem(
         ){
             IconButton(
                 onClick = {
-                    addTaskViewModel.onAddCheckable(item)
+                    vm.onAddCheckable(item)
                 },
                 modifier = Modifier.size(24.dp)
             ) {
@@ -126,19 +140,6 @@ fun CheckableItem(
                     imageVector = Icons.Default.Add,
                     contentDescription = "Add Checkable",
                     tint = GreenColor,
-                    modifier = Modifier.size(16.dp)
-                )
-            }
-            IconButton(
-                onClick = {
-                    addTaskViewModel.onDeleteCheckable(item)
-                },
-                modifier = Modifier.size(24.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = "Delete Checkable",
-                    tint = LightRedColor,
                     modifier = Modifier.size(16.dp)
                 )
             }
