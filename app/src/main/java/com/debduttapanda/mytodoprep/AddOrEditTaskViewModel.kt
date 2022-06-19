@@ -107,7 +107,9 @@ class AddOrEditTaskViewModel: ViewModel() {
                 uid = newId,
                 done = false,
             ).apply {
-                checkables.addAll(_checkables)
+                checkables.addAll(_checkables.filter {
+                    it.value.isNotEmpty()
+                })
             }
         )
         clearAll()

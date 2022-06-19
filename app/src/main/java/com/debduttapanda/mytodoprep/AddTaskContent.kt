@@ -29,19 +29,19 @@ fun AddTaskContent(
                 TaskTitle()
             }
             item{
-                24.spaceX()
+                24.spaceY()
             }
             item(){
                 TaskDescription()
             }
             item{
-                24.spaceX()
+                24.spaceY()
             }
             item{
                 TaskDateTime()
             }
             item{
-                24.spaceX()
+                24.spaceY()
             }
             item{
                 Box(

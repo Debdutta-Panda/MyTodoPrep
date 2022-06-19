@@ -7,7 +7,7 @@ import io.objectbox.relation.ToMany
 data class Task(
     @Id
     var id: Long = 0L,
-    val title: String = "",
+    var title: String = "",
     @Index
     @Unique
     val uid: Long = 0L,

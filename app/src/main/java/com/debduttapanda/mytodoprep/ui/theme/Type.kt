@@ -50,3 +50,13 @@ val task_title_style = TextStyle(
         Font(R.font.montserrat_bold)
     )
 )
+val checkable_checked_style = TextStyle(
+    fontFamily = FontFamily(
+        Font(R.font.montserrat_thin)
+    )
+)
+val checkable_unchecked_style = TextStyle(
+    fontFamily = FontFamily(
+        Font(R.font.montserrat_bold)
+    )
+)
