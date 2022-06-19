@@ -18,8 +18,13 @@ import androidx.navigation.NavHostController
 @Composable
 fun AddOrEditTaskScreen(
     navController: NavHostController,
+    edit: Boolean?,
+    taskId: Long?,
     vm: AddOrEditTaskViewModel = viewModel()
 ) {
+    LaunchedEffect(key1 = Unit){
+        vm.setArguments(edit,taskId)
+    }
     val owner = LocalLifecycleOwner.current
     val context = LocalContext.current
     LaunchedEffect(key1 = vm.navigation.value){
@@ -30,7 +35,7 @@ fun AddOrEditTaskScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(id = R.string.add_task),
+                        text = if(vm.editing) stringResource(id = R.string.edit_task) else  stringResource(id = R.string.add_task),
                         color = if(isSystemInDarkTheme()) MaterialTheme.colors.primary else MaterialTheme.colors.onPrimary
                     )
                 },

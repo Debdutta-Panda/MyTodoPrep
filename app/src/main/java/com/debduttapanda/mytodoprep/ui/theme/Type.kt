@@ -60,3 +60,13 @@ val checkable_unchecked_style = TextStyle(
         Font(R.font.montserrat_bold)
     )
 )
+
+val delete_dialog_title_style = TextStyle(
+    color = LightRedColor,
+    fontWeight = FontWeight.Bold,
+    fontSize = 16.sp
+)
+val dialog_message_style = TextStyle(
+    fontStyle = FontStyle.Italic,
+    fontSize = 16.sp
+)

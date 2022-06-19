@@ -1,11 +1,9 @@
 package com.debduttapanda.mytodoprep
 
-import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModel
 import io.objectbox.Box
 import java.time.LocalDate
@@ -14,11 +12,19 @@ import java.time.LocalTime
 
 
 class AddOrEditTaskViewModel: ViewModel() {
+    private var task: Task? = null
+    private var _editing = false
+    val editing: Boolean
+    get(){
+        return _editing
+    }
+    private var taskId = 0L
     private val _dateDialogOpen = mutableStateOf(false)
     val dateDialogOpen:State<Boolean> = _dateDialogOpen
     private val _timeDialogOpen = mutableStateOf(false)
     val timeDialogOpen:State<Boolean> = _timeDialogOpen
     private fun clearAll() {
+        task = null
         _currentFocusRequestId.value = -1L
         _checkables.clear()
         _time.value = ""
@@ -34,14 +40,19 @@ class AddOrEditTaskViewModel: ViewModel() {
     }
     private val _checkables = mutableStateListOf<Checkable>()
     val checkables: SnapshotStateList<Checkable> = _checkables
+
     private val _time = mutableStateOf("")
     val time:State<String> = _time
+
     private val _date = mutableStateOf("")
     val date:State<String> = _date
+
     private val _description = mutableStateOf("")
     val description:State<String> = _description
+
     private val _title = mutableStateOf("")
     val title: State<String> = _title
+
     val navigation = mutableStateOf<UIScope?>(null)
     //////////////////////
     private var taskBox: Box<Task>? = null
@@ -100,25 +111,47 @@ class AddOrEditTaskViewModel: ViewModel() {
             return
         }
         taskBox?.put(
-            Task(
+            getTaskToAdd()?:return
+        )
+        clearAll()
+        navigation.scope { navHostController, lifecycleOwner, toaster ->
+            toaster?.toast(
+                if(editing) toaster.stringResource(R.string.task_updated_successfully) else toaster.stringResource(R.string.task_added_successfully)
+            )
+            navHostController.popBackStack()
+        }
+    }
+
+    private fun getTaskToAdd(): Task? {
+        if(!_editing){
+            return Task(
                 title = _title.value,
                 description = _description.value,
                 dueDateTime = (_date.value+" "+_time.value).trim(),
                 uid = newId,
                 done = false,
+                created = nowMillis,
+                updated = nowMillis
             ).apply {
                 checkables.addAll(_checkables.filter {
                     it.value.isNotEmpty()
                 })
             }
-        )
-        clearAll()
-        navigation.scope { navHostController, lifecycleOwner, toaster ->
-            toaster?.toast(toaster.stringResource(R.string.task_added_successfully))
-            navHostController.popBackStack()
+        }
+        else{
+            return task?.copy(
+                title = _title.value,
+                description = _description.value,
+                dueDateTime = (_date.value+" "+_time.value).trim(),
+                uid = newId,
+                updated = nowMillis
+            ).apply {
+                checkables.addAll(_checkables.filter {
+                    it.value.isNotEmpty()
+                })
+            }
         }
     }
-
 
 
     private fun canAdd(): Boolean {
@@ -205,5 +238,26 @@ class AddOrEditTaskViewModel: ViewModel() {
     fun onTimeDialogClear() {
         _timeDialogOpen.value = false
         _time.value = ""
+    }
+    fun setArguments(edit: Boolean?, taskId: Long?) {
+        _editing = edit?:false
+        this.taskId = taskId?:0L
+        loadTask()
+    }
+
+    private fun loadTask() {
+        if(taskId==0L){
+            return
+        }
+        val query = taskBox?.query()?.equal(Task_.uid, taskId)?.build()
+        val tasks = query?.find()?: emptyList()
+        if(tasks.isNotEmpty()){
+            task = tasks.first()
+            _checkables.addAll(task?.checkables?: emptyList())
+            _time.value = task?.dueDateTime?.time?:""
+            _date.value = task?.dueDateTime?.date?:""
+            _description.value = task?.description?:""
+            _title.value = task?.title?:""
+        }
     }
 }

@@ -13,7 +13,9 @@ data class Task(
     val uid: Long = 0L,
     val description: String = "",
     val dueDateTime: String = "",
-    val done: Boolean = false,
+    var done: Boolean = false,
+    val created: Long = 0L,
+    val updated: Long = 0L,
 ){
     @Backlink(to = "task")
     lateinit var checkables: ToMany<Checkable>

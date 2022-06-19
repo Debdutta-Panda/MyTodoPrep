@@ -1,12 +1,16 @@
 package com.debduttapanda.mytodoprep
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -45,9 +49,9 @@ fun TasksContent(
                     )
                 }
             ){
-                vm.pages.forEachIndexed{ index, title ->
+                TaskFilters.values().forEachIndexed{ index, filter ->
                     Tab(
-                        text = { Text(title) },
+                        text = { Text(filter.name) },
                         selected = pagerState.currentPage == index,
                         onClick = {
                             scope.launch {
@@ -58,29 +62,49 @@ fun TasksContent(
                 }
             }
             HorizontalPager(
-                count = vm.pages.size,
+                count = TaskFilters.values().size,
                 modifier = Modifier.fillMaxSize(),
                 state = pagerState
             ) {page->
-                LazyColumn(
-                    modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                    contentPadding = PaddingValues(
-                        top = 16.dp,
-                        bottom = 60.dp,
-                        start = 16.dp,
-                        end = 16.dp
-                    )
-                ){
-                    when(page){
-                        0->items(vm.tasksToday){
-                            TaskItem(it)
-                        }
-                        1->items(vm.tasksUpcoming){
-                            TaskItem(it)
-                        }
-                    }
+                when(TaskFilters.values()[page]){
+                    TaskFilters.Today -> TaskFilter(vm.tasksToday)
+                    TaskFilters.Upcoming -> TaskFilter(vm.tasksUpcoming)
+                    TaskFilters.Regular -> TaskFilter(vm.tasksRegular)
+                    TaskFilters.CheckLists -> TaskFilter(vm.tasksChecklist)
+                    TaskFilters.Notes -> TaskFilter(vm.tasksNote)
+                    TaskFilters.All -> TaskFilter(vm.allTasks)
                 }
+            }
+        }
+    }
+}
+
+@Composable
+fun TaskFilter(tasks: SnapshotStateList<Task>) {
+    if(tasks.isEmpty()){
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ){
+            Text(
+                stringResource(id = R.string.no_tasks_yet),
+                color = Color.Gray
+            )
+        }
+    }
+    else{
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(
+                top = 16.dp,
+                bottom = 60.dp,
+                start = 16.dp,
+                end = 16.dp
+            )
+        ){
+            items(tasks){
+                TaskItem(it)
             }
         }
     }

@@ -1,17 +1,23 @@
 package com.debduttapanda.mytodoprep
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RawRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavHostController
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.rememberLottieComposition
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.Days
@@ -135,26 +141,49 @@ get(){
     return df.format(c)
 }
 
-fun daysBetween(left: String, right: String): Int{
-    val parts = left.split("-")
-    val parts1 = right.split("-")
-    return Days
-        .daysBetween(
-            DateTime(
-                parts[2].toInt(),
-                parts[1].toInt(),
-                parts[0].toInt(),
-                0,
-                0,
-                DateTimeZone.getDefault()
-            ),
-            DateTime(
-                parts1[2].toInt(),
-                parts1[1].toInt(),
-                parts1[0].toInt(),
-                0,
-                0,
-                DateTimeZone.getDefault()
-            )
-        ).days
+fun daysBetween(left: String, right: String): Int?{
+    try {
+        val parts = left.split("-")
+        val parts1 = right.split("-")
+        return -Days
+            .daysBetween(
+                DateTime(
+                    parts[2].toInt(),
+                    parts[1].toInt(),
+                    parts[0].toInt(),
+                    0,
+                    0,
+                    DateTimeZone.getDefault()
+                ),
+                DateTime(
+                    parts1[2].toInt(),
+                    parts1[1].toInt(),
+                    parts1[0].toInt(),
+                    0,
+                    0,
+                    DateTimeZone.getDefault()
+                )
+            ).days
+    } catch (e: Exception) {
+        return null
+    }
+}
+
+val nowMillis: Long
+get(){
+    return System.currentTimeMillis()
+}
+
+@Composable
+fun LottieView(
+    @RawRes json: Int,
+    iterations: Int = Int.MAX_VALUE,
+    modifier: Modifier = Modifier
+){
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(json))
+    LottieAnimation(
+        composition,
+        iterations = iterations,
+        modifier = modifier,
+    )
 }

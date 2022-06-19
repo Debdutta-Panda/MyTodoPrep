@@ -10,7 +10,7 @@ class SplashViewModel: ViewModel() {
         navigation.scope{ navHostController, lifecycleOwner, toaster ->
             delay(4000L)
             navHostController.popBackStack()
-            navHostController.navigate("home")
+            navHostController.navigate(Routes.home)
         }
     }
 }

@@ -14,7 +14,9 @@ data class Checkable(
     @Unique
     var value: String = "",
     var uid: Long = 0L,
-    var checked: Boolean = false
+    var checked: Boolean = false,
+    var created: Long = 0L,
+    var updated: Long = 0L
 ){
     lateinit var task: ToOne<Task>
 }

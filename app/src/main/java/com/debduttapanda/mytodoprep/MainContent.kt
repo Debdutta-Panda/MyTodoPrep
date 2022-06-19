@@ -1,9 +1,13 @@
 package com.debduttapanda.mytodoprep
 
+import android.util.Log
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -12,12 +16,15 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 @Composable
 fun MainContent() {
     val navController = rememberAnimatedNavController()
+    navController.addOnDestinationChangedListener(NavController.OnDestinationChangedListener { controller, destination, arguments ->
+        Log.d("fjldkfs",destination.route.toString())
+    })
     AnimatedNavHost(
         navController = navController,
-        startDestination = "splash"
+        startDestination = Routes.splash
     ){
         composable(
-            "splash",
+            Routes.splash,
             enterTransition = {
                 slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
             },
@@ -35,7 +42,7 @@ fun MainContent() {
         }
 
         composable(
-            "home",
+            Routes.home,
             enterTransition = {
                 slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
             },
@@ -52,7 +59,17 @@ fun MainContent() {
             HomeScreen(navController)
         }
         composable(
-            "add",
+            Routes.addOrEdit+"?edit={edit}&taskId={taskId}",
+            arguments = listOf(
+                navArgument(name = "edit"){
+                    type = NavType.BoolType
+                    defaultValue = false
+                },
+                navArgument(name = "taskId"){
+                    type = NavType.LongType
+                    defaultValue = 0L
+                }
+            ),
             enterTransition = {
                 slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
             },
@@ -65,8 +82,12 @@ fun MainContent() {
             popExitTransition = {
                 slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(700))
             }
-        ){
-            AddOrEditTaskScreen(navController)
+        ){backStackEntry->
+            AddOrEditTaskScreen(
+                navController,
+                backStackEntry.arguments?.getBoolean("edit"),
+                backStackEntry.arguments?.getLong("taskId"),
+            )
         }
     }
 }

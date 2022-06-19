@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:4064617384284363167",
-      "lastPropertyId": "5:1682177013734623843",
+      "lastPropertyId": "7:2101964583479335508",
       "name": "Checkable",
       "properties": [
         {
@@ -38,13 +38,23 @@
           "type": 11,
           "flags": 520,
           "relationTarget": "Task"
+        },
+        {
+          "id": "6:7620838585024358015",
+          "name": "created",
+          "type": 6
+        },
+        {
+          "id": "7:2101964583479335508",
+          "name": "updated",
+          "type": 6
         }
       ],
       "relations": []
     },
     {
       "id": "2:7857334013825498419",
-      "lastPropertyId": "6:5829412808750313827",
+      "lastPropertyId": "8:6638218411237884013",
       "name": "Task",
       "properties": [
         {
@@ -79,6 +89,16 @@
           "id": "6:5829412808750313827",
           "name": "done",
           "type": 1
+        },
+        {
+          "id": "7:8018268656905384209",
+          "name": "created",
+          "type": 6
+        },
+        {
+          "id": "8:6638218411237884013",
+          "name": "updated",
+          "type": 6
         }
       ],
       "relations": []

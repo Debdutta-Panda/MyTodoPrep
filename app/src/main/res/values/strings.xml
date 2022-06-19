@@ -12,4 +12,13 @@
     <string name="item">Item</string>
     <string name="please_put_title_description_or_checkables">Please put title or description or checkables</string>
     <string name="task_added_successfully">Task added successfully</string>
+    <string name="task_marked_done">Task marked done</string>
+    <string name="task_marked_not_done">Task marked not done</string>
+    <string name="delete_task">Delete Task</string>
+    <string name="are_you_sure_to_delete">Are you sure to delete?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="no_tasks_for_today">No task for today</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="task_updated_successfully">Task updated successfully</string>
 </resources>

@@ -81,13 +81,7 @@
           "type": 1
         }
       ],
-      "relations": [
-        {
-          "id": "1:1590833647421769348",
-          "name": "checkables",
-          "targetId": "1:4064617384284363167"
-        }
-      ]
+      "relations": []
     }
   ],
   "lastEntityId": "2:7857334013825498419",
@@ -99,6 +93,8 @@
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [],
-  "retiredRelationUids": [],
+  "retiredRelationUids": [
+    1590833647421769348
+  ],
   "version": 1
 }

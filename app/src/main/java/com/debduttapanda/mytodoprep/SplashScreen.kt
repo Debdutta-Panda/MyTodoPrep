@@ -35,8 +35,10 @@ fun SplashScreen(
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            CircularProgressIndicator(
-
+            LottieView(
+                json = R.raw.splash,
+                modifier = Modifier.fillMaxWidth()
+                    .height(300.dp)
             )
             Spacer(
                 modifier = Modifier.height(50.dp)
