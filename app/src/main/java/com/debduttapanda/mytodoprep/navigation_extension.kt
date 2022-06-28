@@ -5,6 +5,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RawRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.AnimatedContentScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -186,4 +190,10 @@ fun LottieView(
         iterations = iterations,
         modifier = modifier,
     )
+}
+
+@OptIn(ExperimentalAnimationApi::class)
+val <S>AnimatedContentScope<S>.animation: EnterTransition
+get(){
+    return slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
 }

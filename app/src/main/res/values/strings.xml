@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyTodoPrep</string>
+    <string name="app_name">MyTodo</string>
     <string name="no_tasks_yet">No task yet</string>
     <string name="add_task">Add Task</string>
     <string name="new_task_title_placeholder">Title</string>
@@ -21,4 +21,5 @@
     <string name="no_tasks_for_today">No task for today</string>
     <string name="edit_task">Edit Task</string>
     <string name="task_updated_successfully">Task updated successfully</string>
+    <string name="delete_all">Delete all</string>
 </resources>

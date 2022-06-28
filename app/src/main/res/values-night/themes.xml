@@ -2,6 +2,6 @@
 <resources>
 
     <style name="Theme.MyTodoPrep" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/app_dark_color_dark</item>
+        <item name="android:statusBarColor">#ff1f1f1f</item>
     </style>
 </resources>

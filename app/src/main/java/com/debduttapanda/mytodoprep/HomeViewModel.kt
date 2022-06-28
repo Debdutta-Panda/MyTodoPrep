@@ -44,8 +44,13 @@ private val Task.sortValue: Long
 
 class HomeViewModel: ViewModel() {
     private var job: Job? = null
+
     private val _askTaskDelete = mutableStateOf(false)
     val askTaskDelete: State<Boolean> = _askTaskDelete
+
+    private val _askDeleteAll = mutableStateOf(false)
+    val askDeleteAll: State<Boolean> = _askDeleteAll
+
     private var deletingTask: Task? = null
     val greet = mutableStateOf(false)
     val allTasks = mutableStateListOf<Task>()
@@ -123,7 +128,7 @@ class HomeViewModel: ViewModel() {
     }
 
     fun deleteAllTasks() {
-        taskBox?.removeAll()
+        _askDeleteAll.value = true
     }
 
     fun onCheckableCheck(task: Task, checkable: Checkable?, checked: Boolean) {
@@ -230,5 +235,14 @@ class HomeViewModel: ViewModel() {
     fun confirmDeleteTask() {
         _askTaskDelete.value = false
         taskBox?.remove(deletingTask?:return)
+    }
+
+    fun confirmDeleteAll() {
+        _askDeleteAll.value = false
+        taskBox?.removeAll()
+    }
+
+    fun onAskDeleteAllCancel() {
+        _askDeleteAll.value = false
     }
 }

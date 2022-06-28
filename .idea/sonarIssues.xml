@@ -8,6 +8,126 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../InnovativeDialoger/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../InnovativeDialoger/app/src/main/java/com/debduttapanda/innovativedialoger/DialogPage.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../InnovativeDialoger/app/src/main/java/com/debduttapanda/innovativedialoger/Dialoger.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../InnovativeDialoger/app/src/main/java/com/debduttapanda/innovativedialoger/MyViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/AddOrEditScreen.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/AddOrEditViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/HomeScreen.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/HomeViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/MainContent.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/SplashScreen.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/SplashViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/TaskAddCheckable.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/TaskDateTime.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/TaskDescription.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/TaskFilters.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/TaskTitle.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/extensions.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/ui/theme/Color.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/ui/theme/Theme.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/java/com/debduttapanda/mytodo/ui/theme/Type.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/res/values-night/themes.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MyTodo/app/src/main/res/values/themes.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/build.gradle">
           <value>
             <set />
@@ -59,6 +179,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/mytodoprep/App.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/mytodoprep/AskDeleteAll.kt">
           <value>
             <set />
           </value>
@@ -278,12 +403,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/values-night/strings.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <value>
             <set />
           </value>
@@ -303,12 +438,57 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../PowerMechanism/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../PowerMechanism/app/src/main/java/com/debduttapanda/powermechanism/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../PowerMechanism/app/src/main/java/com/debduttapanda/powermechanism/PageA.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../PowerMechanism/app/src/main/java/com/debduttapanda/powermechanism/PageAViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../PowerMechanism/app/src/main/java/com/debduttapanda/powermechanism/PageB.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../PowerMechanism/app/src/main/java/com/debduttapanda/powermechanism/PageBViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../PowerMechanism/app/src/main/java/com/debduttapanda/powermechanism/extenstions.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../PowerNavigation/app/build.gradle">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../PowerNavigation/app/src/main/java/com/debduttapanda/powernavigation/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Whitebox/app/src/main/java/com/vxplore/whitebox/Drawing.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Whitebox/app/src/main/java/com/vxplore/whitebox/WhiteBoxViewModel.kt">
           <value>
             <set />
           </value>

@@ -16,18 +16,15 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 @Composable
 fun MainContent() {
     val navController = rememberAnimatedNavController()
-    navController.addOnDestinationChangedListener(NavController.OnDestinationChangedListener { controller, destination, arguments ->
-        Log.d("fjldkfs",destination.route.toString())
-    })
     AnimatedNavHost(
         navController = navController,
         startDestination = Routes.splash
     ){
         composable(
             Routes.splash,
-            enterTransition = {
+            enterTransition = null/*{
                 slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
-            },
+            }*/,
             exitTransition = {
                 slideOutOfContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
             },
@@ -43,15 +40,15 @@ fun MainContent() {
 
         composable(
             Routes.home,
-            enterTransition = {
+            enterTransition = null/*{
                 slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
-            },
+            }*/,
             exitTransition = {
                 slideOutOfContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
             },
-            popEnterTransition = {
+            popEnterTransition = null/*{
                 slideIntoContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(700))
-            },
+            }*/,
             popExitTransition = {
                 slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(700))
             }
@@ -70,15 +67,15 @@ fun MainContent() {
                     defaultValue = 0L
                 }
             ),
-            enterTransition = {
+            enterTransition = null/*{
                 slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
-            },
+            }*/,
             exitTransition = {
                 slideOutOfContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
             },
-            popEnterTransition = {
+            popEnterTransition = null/*{
                 slideIntoContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(700))
-            },
+            }*/,
             popExitTransition = {
                 slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(700))
             }
